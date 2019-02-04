@@ -16,6 +16,12 @@ import CustomerReview from '../components/CustomerReview';
 import MiniHero from '../components/MiniHero';
 import { Paragraph, Text } from 'grommet';
 import PageBody from '../components/PageBody';
+import styled from 'styled-components';
+
+const HeroButton = styled(Button)`
+  padding: .5em 2em;
+  font-size: 1.2em;
+`
 
 const Index = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
@@ -34,7 +40,7 @@ const Index = ({ data, pageContext }) => {
       )}
       <Hero height={'100vh'} image={home.heroImage}> 
         <Heading textAlign={'center'} margin={'medium'} color={'#e1e1e1'} level={1}>{home.mainHeroHeader}</Heading>
-        <Button style={{ padding: '.5em 2em', fontSize: '1.2em'}} primary margin={'medium'} label={'View Listings'}/>
+        <HeroButton primary margin={'medium'} label={'View Listings'}/>
       </Hero>
       <Container>
         <CardCallout text={home.cardCalloutParagraph.childMarkdownRemark.rawMarkdownBody} title={home.cardCalloutTitle}/>

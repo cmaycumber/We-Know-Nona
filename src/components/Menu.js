@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import Logo from '../../static/logos/Logo2.png';
+import Logo from '../../static/logos/WeKnowNonaLogo.webp';
 import { Button } from 'grommet';
 
 const Header = styled.header`
