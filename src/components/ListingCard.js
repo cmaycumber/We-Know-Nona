@@ -70,15 +70,15 @@ const ListingCard = ({ slug, heroImage, title, publishDate, body, ...props }) =>
         <Title level={4}>{title}</Title>
         <Info>
           <InfoWrapper>
-            <Heading color={'gray'} level={5}>{'Price: '}</Heading>
+            <Heading color={'#5d5d5d'} level={5}>{'Price: '}</Heading>
             <Text size={'small'}>{'2'}</Text>
           </InfoWrapper>
           <InfoWrapper>
-            <Heading color={'gray'} level={5}>{'Bed: '}</Heading>
+            <Heading color={'#5d5d5d'} level={5}>{'Bed: '}</Heading>
             <Text size={'small'}>{'2'}</Text>
           </InfoWrapper>
           <InfoWrapper>
-            <Heading color={'gray'} level={5}>{'Bath: '}</Heading>
+            <Heading color={'#5d5d5d'} level={5}>{'Bath: '}</Heading>
             <Text size={'small'}>{'2'}</Text>
           </InfoWrapper>
         </Info>

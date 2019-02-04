@@ -71,7 +71,6 @@ const Footer = () => (
       </Item>
       <Item>
         <FooterHeading level={5}>Maycumber And Associates KW</FooterHeading>
-        <img src="http://weknownona.com/wp-content/uploads/2015/10/Keller-Williams-lake-Nona.png"/>
       </Item>
       <Item>
         <FooterHeading level={5}>Keller Williams Advantage III</FooterHeading>
