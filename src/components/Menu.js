@@ -24,6 +24,8 @@ const Nav = styled.nav`
   padding: 0em 2em 0em 2em;
   img {
     height: 10vh;
+    position: relative;
+    z-index: 1001;
     width: auto;
     @media screen and (max-width: ${props => props.theme.responsive.small}) {
       height: 8vh;
@@ -124,7 +126,7 @@ const MobileList = styled.ul`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: calc(100vw + 17px);
   background: white;
   padding: ${props => props.open ? '4em' : '0em'};
   height: ${props => props.open ? '100vh' : '0vh'};
@@ -134,7 +136,6 @@ const MobileList = styled.ul`
   justify-content: center;
   align-items: center;
   overflow: ${props => props.open ? 'scroll' : 'hidden'};
-  margin-left: ${props => props.open ? '17px' : '0px'};
   li {
     opacity: ${props => props.open ? '1' : '0'};
     border: none;
