@@ -220,7 +220,7 @@ const Menu = () => {
           <img src={Logo} alt="We Know Nona Logo"/>
         </Link>
         {isMobile && <ScrollLock isActive={menuOpen}/> }
-        { isMobile && <HamburgerButton isActive={menuOpen} toggleButton={toggleMenuOpen} colored={coloredMenu || menuOpen} onClick={toggleMenuOpen}/>}
+        { isMobile && <HamburgerButton isActive={menuOpen} toggleButton={toggleMenuOpen} colored={coloredMenu || menuOpen || !home} onClick={toggleMenuOpen}/>}
         { isMobile && 
         <TouchScrollable isActive={menuOpen}>
         <MobileList open={menuOpen}>
