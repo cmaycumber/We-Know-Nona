@@ -3,6 +3,8 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Logo from '../../static/logos/WeKnowNonaLogo.webp';
 import { Button } from 'grommet';
+import { HamburgerSlider } from 'react-animated-burgers';
+import ScrollLock, { TouchScrollable } from 'react-scrolllock';
 
 const Header = styled.header`
   background: ${props => props.colored || !props.home ? 'white' : 'transparent'};
@@ -18,10 +20,14 @@ const Nav = styled.nav`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0em 2em 0em 2em;
   img {
     height: 10vh;
     width: auto;
+    @media screen and (max-width: ${props => props.theme.responsive.small}) {
+      height: 8vh;
+    }
   }
   ul {
     display: flex;
@@ -114,18 +120,85 @@ const Dropdown = styled.div`
   }
 `
 
+const MobileList = styled.ul`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: white;
+  padding: ${props => props.open ? '4em' : '0em'};
+  height: ${props => props.open ? '100vh' : '0vh'};
+  transition: height .3s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: ${props => props.open ? 'scroll' : 'hidden'};
+  margin-left: ${props => props.open ? '17px' : '0px'};
+  li {
+    opacity: ${props => props.open ? '1' : '0'};
+    border: none;
+    transition: all .2s ease-out;
+    :hover {
+      border: none;
+    }
+  }
+  a {
+    color: ${props => props.theme.colors.brand};
+    font-size: 1.5rem;
+  }
+  button {
+    padding: 1em 2em;
+  }
+
+`
+
+const HamburgerButton = styled(HamburgerSlider)`
+  z-index: 1001;
+  padding: 1.2em;
+  margin-top: .2em;
+  padding-top: 1.3em;
+  span {
+    background-color: ${props => props.colored ? props.theme.colors.brand : 'white'};
+    ::before {
+      background-color: ${props => props.colored ? props.theme.colors.brand : 'white'};
+    }
+    ::after {
+      background-color: ${props => props.colored ? props.theme.colors.brand : 'white'};
+    }
+  }
+`
+
 const activeLinkStyle = {}
 
 const Menu = () => {
   const [coloredMenu, setColoredMenu] = useState(false);
   const [home, setHome] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (window.location.pathname === '/') {
       setHome(true);
     }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-  }, [coloredMenu]);
+  }, [coloredMenu, isMobile]);
+
+  const handleResize = () => {
+    if(menuOpen) {
+      setMenuOpen(false);
+    }
+    if (window.innerWidth < 1024) {
+
+      setIsMobile(true);
+
+    } else {
+      setIsMobile(false);
+    }
+  }
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -135,30 +208,55 @@ const Menu = () => {
     }
   }
 
+  const toggleMenuOpen = () => {
+    setMenuOpen(!menuOpen);
+  }
+
   return (
     <Header home={home} colored={coloredMenu}>
       <Nav>
         <Link to='/'>
-          <img src={Logo} alt="Logo" />
+          <img src={Logo} alt="We Know Nona Logo"/>
         </Link>
-        {/* <ul>
-          <li>
-            <Link to="/buy/" activeStyle={activeLinkStyle}>
-              Buy
-            </Link>
-          </li>
-          <li>
-            <Link to="/sell/" activeStyle={activeLinkStyle}>
-              Sell
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Contact
-            </Link>
-          </li>
-        </ul> */}
-        <ul>
+        {isMobile && <ScrollLock isActive={menuOpen}/> }
+        { isMobile && <HamburgerButton isActive={menuOpen} toggleButton={toggleMenuOpen} colored={coloredMenu || menuOpen} onClick={toggleMenuOpen}/>}
+        { isMobile && 
+        <TouchScrollable isActive={menuOpen}>
+        <MobileList open={menuOpen}>
+          <ListItem home={home} colored={coloredMenu}>
+              <Link to="/buy/" activeStyle={activeLinkStyle}>
+                Buy
+              </Link>
+            </ListItem>
+            <ListItem home={home} colored={coloredMenu}>
+              <Link to="/sell/" activeStyle={activeLinkStyle}>
+                Sell
+              </Link>
+            </ListItem>
+            <ListItem home={home} colored={coloredMenu}>
+              <Link to="/listings/" activeStyle={activeLinkStyle}>
+                Listings
+              </Link>
+            </ListItem>
+            <ListItem home={home} colored={coloredMenu}>
+              <Link to="/about/" activeStyle={activeLinkStyle}>
+                About
+              </Link>
+            </ListItem>
+            <ListItem home={home} colored={coloredMenu}>
+              <Link to="/blog/" activeStyle={activeLinkStyle}>
+                Blog
+              </Link>
+            </ListItem>
+            <ListButton home={home} colored={coloredMenu}>
+              <Link to={'/contact'}>
+                <ContactButton path={'/contact/'} primary label={'Get In Touch'}/>
+              </Link>
+            </ListButton>
+        </MobileList>
+        </TouchScrollable>
+        }
+        {!isMobile && <ul>
         <ListItem home={home} colored={coloredMenu}>
             <Link to="/buy/" activeStyle={activeLinkStyle}>
               Buy
@@ -207,14 +305,11 @@ const Menu = () => {
             </Link>
           </DropdownListItem>
           <ListButton home={home} colored={coloredMenu}>
-            {/* <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Contact
-            </Link> */}
             <Link to={'/contact'}>
               <ContactButton home={home} path={'/contact/'} primary color={coloredMenu || !home ? 'brand' : 'white'} buttonColor={coloredMenu} label={'Get In Touch'}/>
             </Link>
           </ListButton>
-        </ul>
+        </ul> }
       </Nav>
     </Header>
   )

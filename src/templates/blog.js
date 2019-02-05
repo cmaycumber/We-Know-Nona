@@ -8,6 +8,8 @@ import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 import Card from '../components/Card';
 import CardList from '../components/CardList';
+import Hero from '../components/Hero';
+import { Heading } from 'grommet';
 
 const Blog = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
@@ -24,6 +26,9 @@ const Blog = ({ data, pageContext }) => {
           <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
         </Helmet>
       )}
+      <Hero height='70vh' image={featuredPost.heroImage}>
+        <Heading textAlign={'center'} margin={'medium'} color={'#e1e1e1'} level={1}>{'Explore Our Blog'}</Heading>
+      </Hero>
       <Container>
         <CardList>
           <Card {...featuredPost}/>

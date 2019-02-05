@@ -43,7 +43,7 @@ const Title = styled(Heading)`
   margin: .5rem 1rem .5rem 1rem;
 `
 
-const InfoWrapper = styled(Heading)`
+const InfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

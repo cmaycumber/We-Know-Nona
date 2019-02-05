@@ -4,7 +4,6 @@ import Layout from '../components/Layout'
 import ListingCard from '../components/ListingCard';
 import Helmet from 'react-helmet'
 import Container from '../components/Container'
-// import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 import Hero from '../components/Hero';
@@ -14,7 +13,6 @@ import ListingCards from '../components/ListingCards';
 import { Button, Heading } from 'grommet';
 import CustomerReview from '../components/CustomerReview';
 import MiniHero from '../components/MiniHero';
-import { Paragraph, Text } from 'grommet';
 import PageBody from '../components/PageBody';
 import styled from 'styled-components';
 
@@ -55,7 +53,6 @@ const Index = ({ data, pageContext }) => {
       </Container>
       <MiniHero image={home.miniHeroImage}/>
       <Container>
-        {/* <CardCallout text={home.cardCalloutParagraph2.childMarkdownRemark.rawMarkdownBody}/> */}
         <PageBody body={home.cardCalloutParagraph2}/>
       </Container>
     </Layout>
