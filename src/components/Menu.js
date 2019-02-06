@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
-import Logo from '../../static/logos/WeKnowNonaLogo.webp';
 import { Button } from 'grommet';
 import { HamburgerSlider } from 'react-animated-burgers';
 import ScrollLock, { TouchScrollable } from 'react-scrolllock';
+import Img from 'gatsby-image';
 
 const Header = styled.header`
   background: ${props => props.colored || !props.home ? 'white' : 'transparent'};
@@ -22,15 +22,6 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0em 2em 0em 2em;
-  img {
-    height: 10vh;
-    position: relative;
-    z-index: 1001;
-    width: auto;
-    @media screen and (max-width: ${props => props.theme.responsive.small}) {
-      height: 8vh;
-    }
-  }
   ul {
     display: flex;
     align-items: center;
@@ -41,6 +32,13 @@ const Nav = styled.nav`
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s;
+    .gatsby-image-wrapper {
+      width: 15vw;
+      z-index: 1001;
+      @media screen and (max-width: ${props => props.theme.responsive.small}) {
+        width: 30vw;
+      }
+    }
   }
 `
 
@@ -172,7 +170,7 @@ const HamburgerButton = styled(HamburgerSlider)`
 
 const activeLinkStyle = {}
 
-const Menu = () => {
+const Menu = ({ data }) => {
   const [coloredMenu, setColoredMenu] = useState(false);
   const [home, setHome] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -217,7 +215,7 @@ const Menu = () => {
     <Header home={home} colored={coloredMenu}>
       <Nav>
         <Link to='/'>
-          <img src={Logo} alt="We Know Nona Logo"/>
+          <Img fluid={data.Logo.childImageSharp.fluid} alt="We Know Nona Logo"/>
         </Link>
         {isMobile && <ScrollLock isActive={menuOpen}/> }
         { isMobile && <HamburgerButton isActive={menuOpen} toggleButton={toggleMenuOpen} colored={coloredMenu || menuOpen || !home} onClick={toggleMenuOpen}/>}
@@ -316,4 +314,19 @@ const Menu = () => {
   )
 }
 
-export default Menu
+const query = () => (
+  <StaticQuery
+        query={graphql`
+          query {
+            Logo: file(relativePath: { eq: "WeKnowNonaLogo.png" }) {
+              ...fluidImage
+            }
+          }
+        `}
+        render={data => (
+          <Menu data={data}/>
+        )}  
+      />
+)
+
+export default query;

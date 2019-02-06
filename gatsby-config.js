@@ -1,4 +1,5 @@
 const config = require('./src/utils/siteConfig')
+const path = require(`path`)
 let contentfulConfig
 
 try {
@@ -31,6 +32,15 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `static`, `logos`),
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {

@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Heading, Text } from 'grommet';
-import Image1 from '../../static/logos/BetterFormatedTRP.webp';
-import Image2 from '../../static/logos/BetterFormattedKW.webp';
-import Image3 from '../../static/logos/BetterFormattedKWLN.webp';
-import { Link } from 'gatsby';
+import Image1 from '../../static/logos/RealEstatePro.jpg';
+import Image2 from '../../static/logos/KW.jpg';
+import Image3 from '../../static/logos/Keller-Williams-lake-Nona.jpg';
+import { Link, graphql, StaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 
 const Wrapper = styled.footer`
   display: flex;
@@ -24,7 +25,6 @@ const List = styled.ul`
   padding: 1em 0 2em;
   margin: 0 1.5em;
   @media screen and (max-width: ${props => props.theme.responsive.medium}) {
-    // max-width: 40vw;
     flex-flow: column;
   }
 `
@@ -47,16 +47,6 @@ const Item = styled.li`
     &:visited {
       color: ${props => props.theme.colors.base};
     }
-  }
-  img {
-    max-width: 15vw;
-    @media screen and (max-width: ${props => props.theme.responsive.medium}) {
-      max-width: 45vw;
-    }
-    @media screen and (max-width: ${props => props.theme.responsive.small}) {
-      max-width: 60vw;
-    }
-    margin: 1em;
   }
 `
 
@@ -81,12 +71,12 @@ const FooterLink = styled.a`
   margin: .5em 0em .5em 0em;
   text-decoration: none;
   max-width: 15vw;
-    @media screen and (max-width: ${props => props.theme.responsive.medium}) {
-      max-width: 45vw;
-    }
-    @media screen and (max-width: ${props => props.theme.responsive.small}) {
-      max-width: 60vw;
-    }
+  @media screen and (max-width: ${props => props.theme.responsive.medium}) {
+    max-width: 45vw;
+  }
+  @media screen and (max-width: ${props => props.theme.responsive.small}) {
+    max-width: 60vw;
+  }
 `
 
 const Copyright = styled(Text)`
@@ -95,7 +85,7 @@ const Copyright = styled(Text)`
     padding: 1em;
 `
 
-const Footer = () => (
+const Footer = ({ data }) => (
   <Wrapper>
     <List>
       <Item>
@@ -126,19 +116,40 @@ const Footer = () => (
       </Item>
       <Item>
         <FooterHeading level={4}>Maycumber And Associates KW</FooterHeading>
-        <Link to='/about/'><img alt="About Maycumber and Associates" src={Image3}/></Link>
+        <Link to='/about/'><Img fluid={data.KWLNImage.childImageSharp.fluid} alt="About Maycumber and Associates" src={Image3}/></Link>
       </Item>
       <Item>
         <FooterHeading level={4}>Keller Williams Advantage III</FooterHeading>
-        <Link to='/about/'><img alt="About Keller Williams Advantage" src={Image2}/></Link>
+        <Link to='/about/'><Img fluid={data.KWImage.childImageSharp.fluid} alt="About Keller Williams Advantage" src={Image2}/></Link>
       </Item>
       <Item>
         <FooterHeading level={4}>Top Real Estate Proffesionals</FooterHeading>
-        <Link to='/about/'><img alt="About the Top Real Estate Proffesionals" src={Image1}/></Link>
+        <Link to='/about/'><Img fluid={data.REPImage.childImageSharp.fluid} alt="About the Top Real Estate Proffesionals" src={Image1}/></Link>
       </Item>
     </List>
     <Copyright>Copyright @ We Know Nona 2019</Copyright>
   </Wrapper>
 )
 
-export default Footer
+const query = () => (
+  <StaticQuery
+        query={graphql`
+          query {
+            REPImage: file(relativePath: { eq: "RealEstatePro.jpg" }) {
+              ...fluidImage
+            }
+            KWImage: file(relativePath: { eq: "KW.jpg" }) {
+              ...fluidImage
+            }
+            KWLNImage: file(relativePath: { eq: "Keller-Williams-lake-Nona.jpg" }) {
+              ...fluidImage
+            }
+          }
+        `}
+        render={data => (
+          <Footer data={data}/>
+        )}  
+      />
+)
+
+export default query;
