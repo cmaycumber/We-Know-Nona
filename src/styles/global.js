@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
+    font-display: auto;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
@@ -106,7 +107,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: Quattrocento !important
+    font-family: Quattrocento, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
   }
 
   button,
