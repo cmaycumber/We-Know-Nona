@@ -1,9 +1,9 @@
 {
-  "name": "We Know Nona",
+  "name": "we-know-nona",
   "description": "The official Lake Nona Real Estate site of the Maycumber and associates reality team",
-  "version": "2.0.4",
-  "repository": "https://github.com/ryanwiemer/gatsby-starter-gcn",
-  "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
+  "version": "1.0.0",
+  "repository": "https://github.com/cmaycumber/we-know-nona",
+  "author": "Chad Maycumber<Chad.maycumber11@gmail.com",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "chalk": "^2.4.2",
