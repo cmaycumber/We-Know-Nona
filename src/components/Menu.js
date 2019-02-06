@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, StaticQuery } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { Button } from 'grommet';
 import { HamburgerSlider } from 'react-animated-burgers';
