@@ -223,12 +223,12 @@ const Menu = ({ data }) => {
         <TouchScrollable isActive={menuOpen}>
         <MobileList open={menuOpen}>
           <ListItem home={home} colored={coloredMenu}>
-              <Link to="/buy/" activeStyle={activeLinkStyle}>
+              <Link to="/buy-with-us/" activeStyle={activeLinkStyle}>
                 Buy
               </Link>
             </ListItem>
             <ListItem home={home} colored={coloredMenu}>
-              <Link to="/sell/" activeStyle={activeLinkStyle}>
+              <Link to="/sell-with-us/" activeStyle={activeLinkStyle}>
                 Sell
               </Link>
             </ListItem>
@@ -257,12 +257,12 @@ const Menu = ({ data }) => {
         }
         {!isMobile && <ul>
         <ListItem home={home} colored={coloredMenu}>
-            <Link to="/buy/" activeStyle={activeLinkStyle}>
+            <Link to="/buy-with-us/" activeStyle={activeLinkStyle}>
               Buy
             </Link>
           </ListItem>
           <ListItem home={home} colored={coloredMenu}>
-            <Link to="/sell/" activeStyle={activeLinkStyle}>
+            <Link to="/sell-with-us/" activeStyle={activeLinkStyle}>
               Sell
             </Link>
           </ListItem>
