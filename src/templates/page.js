@@ -7,11 +7,12 @@ import Container from '../components/Container'
 import PageTitle from '../components/PageTitle'
 import PageBody from '../components/PageBody'
 import SEO from '../components/SEO'
-// import Hero from '../components/Hero'
-
+import Hero from '../components/Hero'
+import { Heading } from 'grommet'
+import PageCTA from '../components/PageCTA';
 
 const PageTemplate = ({ data }) => {
-  const { title, slug, body } = data.contentfulPage
+  const { title, heroImage, slug, body } = data.contentfulPage
   const postNode = data.contentfulPage
 
   return (
@@ -20,12 +21,13 @@ const PageTemplate = ({ data }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} pageSEO />
-
+      { heroImage && <Hero image={heroImage} height={'60vh'}>
+      <Heading textAlign={'center'} margin={'medium'} color={'#e1e1e1'} level={1}>{title}</Heading>
+      </Hero>}
       <Container>
-        <PageTitle>{title}</PageTitle>
-        {/* <Hero/> */}
-
+        { !heroImage && <PageTitle>{title}</PageTitle> }
         <PageBody body={body} />
+        <PageCTA/>
       </Container>
     </Layout>
   )
@@ -36,6 +38,12 @@ export const query = graphql`
     contentfulPage(slug: { eq: $slug }) {
       title
       slug
+      heroImage {
+        title
+        fluid(maxWidth: 1800) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+      }
       metaDescription {
         internal {
           content
