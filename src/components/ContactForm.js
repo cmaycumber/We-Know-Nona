@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import { Button } from 'grommet'
 /*
   ⚠️ This is an example of a contact form powered with Netlify form handling.
   Be sure to review the Netlify documentation for more information:
@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 const Form = styled.form`
   max-width: ${props => props.theme.sizes.maxWidthCentered};
-  margin: 0 auto;
+  margin: 1em auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -84,12 +84,12 @@ const Message = styled.textarea`
 `
 
 const Submit = styled.input`
-  background: ${props => props.theme.colors.base} !important;
+  background: ${props => props.theme.colors.brand} !important;
   color: white !important;
   cursor: pointer;
   transition: 0.2s;
   &:hover {
-    background: ${props => props.theme.colors.highlight} !important;
+    opacity: .8;
   }
 `
 
@@ -120,8 +120,7 @@ const Modal = styled.div`
   }
 `
 
-const Button = styled.div`
-  background: ${props => props.theme.colors.base};
+const ContactButton = styled(Button)`
   font-size: 1em;
   display: inline-block;
   margin: 0 auto;
@@ -136,9 +135,6 @@ const Button = styled.div`
   z-index: 99;
   &:focus {
     outline: none;
-  }
-  &:hover {
-    background: ${props => props.theme.colors.highlight};
   }
 `
 
@@ -241,7 +237,7 @@ class ContactForm extends React.Component {
             Thank you for reaching out. I will get back to you as soon as
             possible.
           </p>
-          <Button onClick={this.closeModal}>Okay</Button>
+          <ContactButton primary onClick={this.closeModal}>Okay</ContactButton>
         </Modal>
       </Form>
     )

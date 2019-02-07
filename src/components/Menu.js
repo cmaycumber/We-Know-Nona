@@ -238,8 +238,13 @@ const Menu = ({ data }) => {
               </Link>
             </ListItem>
             <ListItem home={home} colored={coloredMenu}>
-              <Link to="/about/" activeStyle={activeLinkStyle}>
+              <Link to="/about-the-maycumber-team/" activeStyle={activeLinkStyle}>
                 About
+              </Link>
+            </ListItem>
+            <ListItem home={home} colored={coloredMenu}>
+              <Link to="/communities/" activeStyle={activeLinkStyle}>
+                Communities
               </Link>
             </ListItem>
             <ListItem home={home} colored={coloredMenu}>
@@ -272,7 +277,7 @@ const Menu = ({ data }) => {
             </Link>
           </ListItem>
           <ListItem home={home} colored={coloredMenu}>
-            <Link to="/about/" activeStyle={activeLinkStyle}>
+            <Link to="/about-the-maycumber-team/" activeStyle={activeLinkStyle}>
               About
             </Link>
           </ListItem>
@@ -286,10 +291,10 @@ const Menu = ({ data }) => {
               <Link to="/communities/" activeStyle={activeLinkStyle}>
                 Communities
               </Link>
-              <Link to="/communities/northlake-park" activeStyle={activeLinkStyle}>
+              <Link to="/communities/northlake-park-at-lake-nona/" activeStyle={activeLinkStyle}>
                 Northlake Park
               </Link>
-              <Link to="/communities/nona-crest" activeStyle={activeLinkStyle}>
+              <Link to="/communities/nona-crest-lake-nona/" activeStyle={activeLinkStyle}>
                 Nona Crest
               </Link>
               <Link to="/communities/village-walk" activeStyle={activeLinkStyle}>

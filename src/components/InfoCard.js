@@ -21,7 +21,7 @@ const ContentWrapper = styled.div`
   display: flex;
   padding: 1em;
   flex-direction: column;
-  flex: 5
+  flex: 5;
 `
 
 const BoxWrapper = styled.div`
@@ -77,12 +77,12 @@ const InfoCard = props => (
       <BoxWrapper> 
         <Heading margin={'small'} level={3}>{props.titles[0]}</Heading>
         <Text margin={'small'} size={'medium'}>{props.text[0] ? props.text[0] : 'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'}</Text>
-        <Link to={'/about/'}><Button margin={'small'} label={'About The Agents'}/></Link>
+        <Link to={'/about-the-maycumber-team/'}><Button margin={'small'} label={'About The Agents'}/></Link>
       </BoxWrapper>
       <BoxWrapper> 
         <Heading margin={'small'} level={3}>{props.titles[1]}</Heading>
         <Text margin={'small'} size={'medium'}>{props.text[1] ? props.text[1] : 'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'}</Text>
-        <Link to={'/about/'}><Button margin={'small'} label={'About Us'}/></Link>
+        <Link to={'about-the-maycumber-team/'}><Button margin={'small'} label={'About Us'}/></Link>
       </BoxWrapper>
       <BoxWrapper> 
         <Heading margin={'small'} level={3}>{props.titles[2]}</Heading>

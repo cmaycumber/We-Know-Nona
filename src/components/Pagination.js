@@ -11,14 +11,14 @@ const Wrapper = styled.div`
   max-width: ${props => props.theme.sizes.maxWidth};
   padding: 0 1.5em 2em;
   a {
-    background: ${props => props.theme.colors.base};
+    background: ${props => props.theme.colors.brand};
     color: white;
     padding: 1em;
     border-radius: 2px;
     text-decoration: none;
     transition: 0.2s;
     &:hover {
-      background: ${props => props.theme.colors.highlight};
+      opacity: .8;
     }
   }
 `
