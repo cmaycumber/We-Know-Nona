@@ -9,6 +9,7 @@ import PageCTA from '../components/PageCTA';
 import { graphql } from 'gatsby';
 import CommunityCard from '../components/CommunityCard';
 import CommunityCardList from '../components/CommunityCardList';
+import { Heading } from 'grommet';
 
 const Communities = ({ data }) => {
   const postNode = {
@@ -24,7 +25,7 @@ const Communities = ({ data }) => {
       </Helmet>
       <SEO postNode={postNode} pagePath="communities" customTitle />
       <Container>
-        <PageTitle>Communities</PageTitle>
+        <Heading textAlign={'center'} level={1}>Communities</Heading>
         <CommunityCardList>
           <CommunityCard {...featuredCommunity}/>
           {communities.slice(1).map(({ node: communities }) => (
