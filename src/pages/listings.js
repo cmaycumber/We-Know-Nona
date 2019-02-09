@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
 import PageCTA from '../components/PageCTA';
 import { graphql } from 'gatsby';
@@ -15,8 +14,9 @@ const Listings = ({ data }) => {
   const postNode = {
     title: `Listings - ${config.siteTitle}`,
   }
-  const posts = data.allContentfulPost.edges
-  const featuredListing = posts[0].node
+
+  const listings = data.allContentfulListing.edges
+  const featuredListing = listings[0].node
 
   return (
     <Layout>
@@ -28,8 +28,8 @@ const Listings = ({ data }) => {
         <Heading textAlign={'center'} level={1}>Listings</Heading>
         <ListingCards>
           <ListingCard {...featuredListing}/>
-          {posts.slice(1).map(({ node: post }) => (
-            <ListingCard key={post.id} {...post} />
+          {listings.slice(1).map(({ node: listings }, i) => (
+            <ListingCard key={i} {...listings} />
           ))}
         </ListingCards>
         <PageCTA/>
@@ -40,31 +40,38 @@ const Listings = ({ data }) => {
 
 export const query = graphql`
 query {
-    allContentfulPost(
-      sort: { fields: [publishDate], order: DESC }
-    ) {
-      edges {
-        node {
+  allContentfulListing(
+    sort: { fields: [publishDate], order: DESC }
+  ) {
+    edges {
+      node {
+        title
+        heroImage {
           title
-          id
-          slug
-          publishDate(formatString: "MMMM DD, YYYY")
-          heroImage {
-            title
-            fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+          fluid(maxWidth: 1800) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
-          body {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 130)
-            }
+        }
+        metaDescription {
+          internal {
+            content
+          }
+        }
+        publishDate(formatString: "MMMM DD, YYYY")
+        slug
+        beds
+        baths
+        price
+        body {
+          childMarkdownRemark {
+            html
+            excerpt(pruneLength: 130)
           }
         }
       }
     }
   }
+}
 `
 
 export default Listings

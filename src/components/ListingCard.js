@@ -48,7 +48,7 @@ const InfoWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
-  padding: .1em;
+  padding: .2rem;
 `
 
 const Excerpt = styled(Text)`
@@ -62,25 +62,25 @@ const Info = styled.div`
   flex-direction: row;
 `
 
-const ListingCard = ({ slug, heroImage, title, publishDate, body, ...props }) => {
+const ListingCard = ({ slug, heroImage, title, publishDate, body, baths, beds, price, ...props }) => {
   return (
-    <Listing featured={props.featured}>
-      <Link to={`/${slug}/`}>
+    <Listing>
+      <Link to={`/listings/${slug}/`}>
         <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
         <Title level={4}>{title}</Title>
         <Info>
-          <InfoWrapper>
+          { (price !== 0) && <InfoWrapper>
             <Heading color={'#5d5d5d'} level={5}>{'Price: '}</Heading>
-            <Text size={'small'}>{'2'}</Text>
-          </InfoWrapper>
-          <InfoWrapper>
+            <Text size={'small'}>{price}</Text>
+          </InfoWrapper> }
+          { beds && <InfoWrapper>
             <Heading color={'#5d5d5d'} level={5}>{'Bed: '}</Heading>
-            <Text size={'small'}>{'2'}</Text>
-          </InfoWrapper>
-          <InfoWrapper>
+            <Text size={'small'}>{beds}</Text>
+          </InfoWrapper> }
+          { baths && <InfoWrapper>
             <Heading color={'#5d5d5d'} level={5}>{'Bath: '}</Heading>
-            <Text size={'small'}>{'2'}</Text>
-          </InfoWrapper>
+            <Text size={'small'}>{baths}</Text>
+          </InfoWrapper> }
         </Info>
         <Excerpt size={'small'}
           textAlign={'center'}

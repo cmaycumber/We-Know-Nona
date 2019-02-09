@@ -57,7 +57,7 @@ const Excerpt = styled.p`
 const Card = ({ slug, heroImage, title, publishDate, body, ...props }) => {
   return (
     <Post featured={props.featured}>
-      <Link to={`/${slug}/`}>
+      <Link to={`/blog/${slug}/`}>
         <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
         <Title>{title}</Title>
         <Date>{publishDate}</Date>

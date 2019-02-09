@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import ListingCard from '../components/ListingCard';
 import Helmet from 'react-helmet'
@@ -22,9 +22,10 @@ const HeroButton = styled(Button)`
 `
 
 const Index = ({ data, pageContext }) => {
-  const posts = data.allContentfulPost.edges
+  console.log(data);
+  const listings = data.allContentfulListing.edges
   const home  = data.contentfulHomepage
-  const featuredPost = posts[0].node
+  const featuredPost = listings[0].node
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
 
@@ -38,15 +39,15 @@ const Index = ({ data, pageContext }) => {
       )}
       <Hero height={'100vh'} image={home.heroImage}> 
         <Heading textAlign={'center'} margin={'medium'} color={'#e1e1e1'} level={1}>{home.mainHeroHeader}</Heading>
-        <HeroButton primary margin={'medium'} label={'View Listings'}/>
+        <Link to={'/listings/'}><HeroButton primary margin={'medium'} label={'View Listings'}/></Link>
       </Hero>
       <Container>
         <CardCallout text={home.cardCalloutParagraph.childMarkdownRemark.rawMarkdownBody} title={home.cardCalloutTitle}/>
         <InfoCard text={[home.infoCardParagraph1.childMarkdownRemark.rawMarkdownBody, home.infoCardParagraph2.childMarkdownRemark.rawMarkdownBody, home.infoCardParagraph3.childMarkdownRemark.rawMarkdownBody]} titles={[home.infoCardTitle1, home.infoCardTitle2, home.infoCardTitle3]} image={home.infoCardPicture}/>
         <ListingCards>
           <ListingCard {...featuredPost}/>
-          {posts.slice(1).map(({ node: post }) => (
-            <ListingCard key={post.id} {...post} />
+          {listings.slice(1).map(({ node: listings }, i) => (
+            <ListingCard key={i} {...listings} />
           ))}
         </ListingCards>
         <CustomerReview/>
@@ -111,7 +112,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPost(
+    allContentfulListing(
       sort: { fields: [publishDate], order: DESC }
       limit: $limit
       skip: $skip
@@ -119,15 +120,17 @@ export const query = graphql`
       edges {
         node {
           title
-          id
-          slug
-          publishDate(formatString: "MMMM DD, YYYY")
           heroImage {
             title
             fluid(maxWidth: 1800) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
+          publishDate(formatString: "MMMM DD, YYYY")
+          slug
+          beds
+          baths
+          price
           body {
             childMarkdownRemark {
               html

@@ -184,6 +184,11 @@ const Menu = ({ data }) => {
     handleResize();
     window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
+
+    return function cleanup() {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [coloredMenu, isMobile]);
 
   const handleResize = () => {
@@ -297,10 +302,10 @@ const Menu = ({ data }) => {
               <Link to="/communities/nona-crest-lake-nona/" activeStyle={activeLinkStyle}>
                 Nona Crest
               </Link>
-              <Link to="/communities/village-walk" activeStyle={activeLinkStyle}>
+              <Link to="/communities/village-walk-at-lake-nona/" activeStyle={activeLinkStyle}>
                 Village Walk
               </Link>
-              <Link to="/communities/country-club" activeStyle={activeLinkStyle}>
+              <Link to="/communities/lake-nona-golf-and-country-club/" activeStyle={activeLinkStyle}>
                 Country Club
               </Link>
             </Dropdown>

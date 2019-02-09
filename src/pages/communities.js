@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
 import PageCTA from '../components/PageCTA';
 import { graphql } from 'gatsby';
@@ -28,8 +27,8 @@ const Communities = ({ data }) => {
         <Heading textAlign={'center'} level={1}>Communities</Heading>
         <CommunityCardList>
           <CommunityCard {...featuredCommunity}/>
-          {communities.slice(1).map(({ node: communities }) => (
-            <CommunityCard key={communities.id} {...communities} />
+          {communities.slice(1).map(({ node: communities }, i) => (
+            <CommunityCard key={i} {...communities} />
           ))}
         </CommunityCardList>
         <PageCTA/>

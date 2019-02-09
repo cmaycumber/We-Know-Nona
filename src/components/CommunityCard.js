@@ -57,7 +57,7 @@ const Excerpt = styled.p`
 const CommunityCard = ({ slug, heroImage, title, publishDate, body, ...props }) => {
   return (
     <Community featured={props.featured}>
-      <Link to={`/${slug}/`}>
+      <Link to={`/communities/${slug}/`}>
         <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
         <Title>{title}</Title>
         <Date>{publishDate}</Date>
