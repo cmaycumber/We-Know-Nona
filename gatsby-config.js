@@ -31,7 +31,6 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-subfont`,
     // {
     //   resolve: `gatsby-plugin-typography`,
     //   options: {
