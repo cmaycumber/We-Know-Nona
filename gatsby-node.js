@@ -137,7 +137,6 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
 
-
       pages.map(({ node }) => {
         createPage({
           path: `/listings/${node.slug}/`,
