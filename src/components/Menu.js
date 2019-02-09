@@ -7,6 +7,7 @@ import ScrollLock, { TouchScrollable } from 'react-scrolllock';
 import Img from 'gatsby-image';
 
 const Header = styled.header`
+  background: transparent;
   background: ${props => props.colored || !props.home ? 'white' : 'transparent'};
   width: 100%;
   transition: all .2s ease-out;
@@ -222,7 +223,7 @@ const Menu = ({ data }) => {
         <Link to='/'>
           <Img fluid={data.Logo.childImageSharp.fluid} alt="We Know Nona Logo"/>
         </Link>
-        {isMobile && <ScrollLock isActive={menuOpen}/> }
+        { isMobile && <ScrollLock isActive={menuOpen}/> }
         { isMobile && <HamburgerButton isActive={menuOpen} toggleButton={toggleMenuOpen} colored={coloredMenu || menuOpen || !home} onClick={toggleMenuOpen}/>}
         { isMobile && 
         <TouchScrollable isActive={menuOpen}>
