@@ -42,8 +42,8 @@ const Index = ({ data, pageContext }) => {
         <Link to={'/listings/'}><HeroButton primary margin={'medium'} label={'View Listings'}/></Link>
       </Hero>
       <Container>
-        <CardCallout text={home.cardCalloutParagraph.childMarkdownRemark.rawMarkdownBody} title={home.cardCalloutTitle}/>
-        <InfoCard text={[home.infoCardParagraph1.childMarkdownRemark.rawMarkdownBody, home.infoCardParagraph2.childMarkdownRemark.rawMarkdownBody, home.infoCardParagraph3.childMarkdownRemark.rawMarkdownBody]} titles={[home.infoCardTitle1, home.infoCardTitle2, home.infoCardTitle3]} image={home.infoCardPicture}/>
+        <CardCallout text={home.cardCalloutParagraph.childMarkdownRemark.html} title={home.cardCalloutTitle}/>
+        <InfoCard text={[home.infoCardParagraph1.childMarkdownRemark.html, home.infoCardParagraph2.childMarkdownRemark.html, home.infoCardParagraph3.childMarkdownRemark.html]} titles={[home.infoCardTitle1, home.infoCardTitle2, home.infoCardTitle3]} image={home.infoCardPicture}/>
         <ListingCards>
           <ListingCard {...featuredPost}/>
           {listings.slice(1).map(({ node: listings }, i) => (
@@ -79,7 +79,7 @@ export const query = graphql`
       cardCalloutTitle
       cardCalloutParagraph {
         childMarkdownRemark{
-          rawMarkdownBody
+          html
         }
       }
       infoCardPicture {
@@ -93,17 +93,17 @@ export const query = graphql`
       infoCardTitle3
       infoCardParagraph1 {
         childMarkdownRemark{
-          rawMarkdownBody
+          html
         }
       }
       infoCardParagraph2 {
         childMarkdownRemark{
-          rawMarkdownBody
+          html
         }
       }
       infoCardParagraph3 {
         childMarkdownRemark{
-          rawMarkdownBody
+          html
         }
       }
       cardCalloutParagraph2 {
