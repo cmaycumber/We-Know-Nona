@@ -79,7 +79,7 @@ const DropdownListItem = styled.li`
   :hover {
     // border-bottom: 2px solid ${props => props.colored || !props.home ? props.theme.colors.brand : 'white'};
     #dropdown {
-      height: 11.5em;
+      height: 210%;
       margin-top: -.5vh;
       margin-left: -2vw;
       padding: .5em;
@@ -106,7 +106,7 @@ const Dropdown = styled.div`
   align-items: center;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   flex-direction: column;
-  height: 0em;
+  height: 0%;
   overflow: hidden;
   width: auto;
   position: absolute;
