@@ -10,11 +10,7 @@
     "contentful-import": "^7.4.3",
     "cwebp-bin": "^5.0.0",
     "eslint": "^5.13.0",
-<<<<<<< HEAD
     "gatsby": "^2.1.2",
-=======
-    "gatsby": "^2.0.118",
->>>>>>> master
     "gatsby-image": "^2.0.29",
     "gatsby-plugin-canonical-urls": "^2.0.10",
     "gatsby-plugin-catch-links": "^2.0.11",
