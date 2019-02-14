@@ -9,6 +9,13 @@ const Wrapper = styled.section`
   justify-content: center;
   margin: 5em 0em;
   flex-direction: column;
+  a {
+    transition: 0.2s;
+    color: ${props => props.theme.colors.base};
+    &:hover {
+      color: ${props => props.theme.colors.highlight};
+    }
+  }
 `
 
 const Title = styled(Heading)`
@@ -18,7 +25,7 @@ const Title = styled(Heading)`
 const CardCallout = props => (
   <Wrapper>
     { props.title && <Title textAlign={'center'} level={6}>{ props.title ? props.title : 'Friendly, Smart, Efficient' }</Title> }
-    <Text textAlign={'center'} size={'large'}>{props.text ? props.text : 'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'}</Text>
+    <Text textAlign={'center'} size={'large'} dangerouslySetInnerHTML={{ __html: props.text }}/>
   </Wrapper>
 )
 

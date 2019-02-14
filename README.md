@@ -1,8 +1,6 @@
-# gatsby-starter-gcn
+# We Know Nona Website
 
-A starter template to build amazing static websites with Gatsby, Contentful and Netlify. Inspired by [gatsby-contentful-starter](https://github.com/contentful-userland/gatsby-contentful-starter).
-
-For Gatsby `v1` please use the [v1 branch](https://github.com/ryanwiemer/gatsby-starter-gcn/tree/v1)
+A starter template to build amazing static websites with Gatsby, Contentful and Netlify. Built with[gatsby-gcn-starter](https://github.com/ryanwiemer/gatsby-starter-gcn/).
 
 ## Features
 
@@ -24,9 +22,7 @@ For Gatsby `v1` please use the [v1 branch](https://github.com/ryanwiemer/gatsby-
 
 ## Demo
 
-https://gcn.netlify.com/
-
-![](screenshots/demo.jpg)
+https://we-know-nona.netlify.com/
 
 ## Getting Started
 

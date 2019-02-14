@@ -1,15 +1,14 @@
 import { createGlobalStyle } from 'styled-components'
+import 'typeface-merriweather-sans'
+import 'typeface-roboto-slab'
+import 'typeface-quattrocento'
+import 'typeface-nunito-sans'
 
 const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
   */
-
-  @import url('https://fonts.googleapis.com/css?family=Quattrocento');
-  @import url('https://fonts.googleapis.com/css?family=Nunito Sans');
-  @import url('https://fonts.googleapis.com/css?family=Roboto Slab');
-  @import url('https://fonts.googleapis.com/css?family=Merriweather Sans');
 
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,

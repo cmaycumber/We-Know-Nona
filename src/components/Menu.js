@@ -7,6 +7,7 @@ import ScrollLock, { TouchScrollable } from 'react-scrolllock';
 import Img from 'gatsby-image';
 
 const Header = styled.header`
+  background: transparent;
   background: ${props => props.colored || !props.home ? 'white' : 'transparent'};
   width: 100%;
   transition: all .2s ease-out;
@@ -43,7 +44,7 @@ const Nav = styled.nav`
 `
 
 const ListItem = styled.li`
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
   display: inline-block;
   padding: .5em 1em .5em 1em;
   :hover {
@@ -58,7 +59,7 @@ const ListItem = styled.li`
 `
 
 const ListButton = styled.li`
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
   display: inline-block;
   padding: .5em 1em .5em 1em;
   // a {
@@ -72,7 +73,7 @@ const ContactButton = styled(Button)`
 `
 
 const DropdownListItem = styled.li`
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
   display: inline-block;
   padding: .5em 1em .5em 1em;
   :hover {
@@ -222,7 +223,7 @@ const Menu = ({ data }) => {
         <Link to='/'>
           <Img fluid={data.Logo.childImageSharp.fluid} alt="We Know Nona Logo"/>
         </Link>
-        {isMobile && <ScrollLock isActive={menuOpen}/> }
+        { isMobile && <ScrollLock isActive={menuOpen}/> }
         { isMobile && <HamburgerButton isActive={menuOpen} toggleButton={toggleMenuOpen} colored={coloredMenu || menuOpen || !home} onClick={toggleMenuOpen}/>}
         { isMobile && 
         <TouchScrollable isActive={menuOpen}>
