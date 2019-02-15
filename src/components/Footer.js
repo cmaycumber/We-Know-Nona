@@ -116,15 +116,15 @@ const Footer = ({ data }) => (
       </Item>
       <Item>
         <FooterHeading level={4}>Maycumber And Associates KW</FooterHeading>
-        <Link to='/about/'><Img fluid={data.KWLNImage.childImageSharp.fluid} alt="About Maycumber and Associates" src={Image3}/></Link>
+        <Link to='/about-the-maycumber-team/'><Img fluid={data.KWLNImage.childImageSharp.fluid} alt="About Maycumber and Associates" src={Image3}/></Link>
       </Item>
       <Item>
         <FooterHeading level={4}>Keller Williams Advantage III</FooterHeading>
-        <Link to='/about/'><Img fluid={data.KWImage.childImageSharp.fluid} alt="About Keller Williams Advantage" src={Image2}/></Link>
+        <Link to='/about-the-maycumber-team/'><Img fluid={data.KWImage.childImageSharp.fluid} alt="About Keller Williams Advantage" src={Image2}/></Link>
       </Item>
       <Item>
         <FooterHeading level={4}>Top Real Estate Proffesionals</FooterHeading>
-        <Link to='/about/'><Img fluid={data.REPImage.childImageSharp.fluid} alt="About the Top Real Estate Proffesionals" src={Image1}/></Link>
+        <Link to='/about-the-maycumber-team/'><Img fluid={data.REPImage.childImageSharp.fluid} alt="About the Top Real Estate Proffesionals" src={Image1}/></Link>
       </Item>
     </List>
     <Copyright>Copyright @ We Know Nona 2019</Copyright>
