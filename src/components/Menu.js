@@ -7,7 +7,8 @@ import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import Img from 'gatsby-image'
 
 const Header = styled.header`
-  background: transparent;
+  visibility: ${props =>
+    props.home === undefined ? 'hidden' : 'visible'};
   background: ${props =>
     props.colored || !props.home ? 'white' : 'transparent'};
   width: 100%;
@@ -185,13 +186,15 @@ const activeLinkStyle = {}
 
 const Menu = ({ data }) => {
   const [coloredMenu, setColoredMenu] = useState(false)
-  const [home, setHome] = useState(false)
+  const [home, setHome] = useState(undefined)
   const [isMobile, setIsMobile] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     if (window.location.pathname === '/') {
       setHome(true)
+    } else {
+      setHome(false)
     }
 
     handleResize()
