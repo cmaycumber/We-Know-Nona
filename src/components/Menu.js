@@ -66,11 +66,11 @@ const ListButton = styled.li`
   border-bottom: 2px solid transparent;
   display: inline-block;
   padding: .5em 1em .5em 1em;
-  // a {
-  //   color: ${props =>
+   /* a {
+     color: ${props =>
     props.colored || !props.home ? props.theme.colors.brand : 'white'};
-  //   text-decoration: none;
-  // }
+     text-decoration: none;
+   } */
 `
 
 const ContactButton = styled(Button)`
@@ -83,8 +83,8 @@ const DropdownListItem = styled.li`
   display: inline-block;
   padding: .5em 1em .5em 1em;
   :hover {
-    // border-bottom: 2px solid ${props =>
-      props.colored || !props.home ? props.theme.colors.brand : 'white'};
+    /* border-bottom: 2px solid ${props =>
+      props.colored || !props.home ? props.theme.colors.brand : 'white'}; */
     #dropdown {
       height: 210%;
       margin-top: -.5vh;
