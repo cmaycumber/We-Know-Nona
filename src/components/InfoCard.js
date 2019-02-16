@@ -1,8 +1,8 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-import { Text, Heading, Button } from 'grommet';
-import { Link } from 'gatsby';
+import { Text, Heading, Button } from 'grommet'
+import { Link } from 'gatsby'
 
 const Wrapper = styled.section`
   position: relative;
@@ -78,27 +78,52 @@ const SideImg = styled(Img)`
 
 const InfoCard = props => (
   <Wrapper>
-    <SideImg fluid={props.image.fluid} height={'100%'}/>
-    <Quote color={'white'} alignText={'center'} size={'xlarge'}>"This is the ultimate definition of a full service real estate firm."</Quote>
+    <SideImg fluid={props.image.fluid} height={'100%'} />
+    <Quote color={'white'} alignText={'center'} size={'xlarge'}>
+      "This is the ultimate definition of a full service real estate firm."
+    </Quote>
     <ContentWrapper>
-      <BoxWrapper> 
-        <Heading margin={'small'} level={3}>{props.titles[0]}</Heading>
-        <Text margin={'small'} size={'medium'} dangerouslySetInnerHTML={{ __html: props.text[0] }}/>
-        <Link to={'/about-the-maycumber-team/'}><Button margin={'small'} label={'About The Agents'}/></Link>
+      <BoxWrapper>
+        <Heading margin={'small'} level={3}>
+          {props.titles[0]}
+        </Heading>
+        <Text
+          margin={'small'}
+          size={'medium'}
+          dangerouslySetInnerHTML={{ __html: props.text[0] }}
+        />
+        <Link to={'/about-the-maycumber-team/'}>
+          <Button margin={'small'} label={'About The Agents'} />
+        </Link>
       </BoxWrapper>
-      <BoxWrapper> 
-        <Heading margin={'small'} level={3}>{props.titles[1]}</Heading>
-        <Text margin={'small'} size={'medium'} dangerouslySetInnerHTML={{ __html: props.text[1] }}/>
-        <Link to={'/about-the-maycumber-team/'}><Button margin={'small'} label={'About Us'}/></Link>
+      <BoxWrapper>
+        <Heading margin={'small'} level={3}>
+          {props.titles[1]}
+        </Heading>
+        <Text
+          margin={'small'}
+          size={'medium'}
+          dangerouslySetInnerHTML={{ __html: props.text[1] }}
+        />
+        <Link to={'/about-the-maycumber-team/'}>
+          <Button margin={'small'} label={'About Us'} />
+        </Link>
       </BoxWrapper>
-      <BoxWrapper> 
-        <Heading margin={'small'} level={3}>{props.titles[2]}</Heading>
-        <Text margin={'small'} size={'medium'} dangerouslySetInnerHTML={{ __html: props.text[2] }}/>
-        <Link to={'/listings/'}><Button margin={'small'} label={'View Our Listings'}/></Link>
+      <BoxWrapper>
+        <Heading margin={'small'} level={3}>
+          {props.titles[2]}
+        </Heading>
+        <Text
+          margin={'small'}
+          size={'medium'}
+          dangerouslySetInnerHTML={{ __html: props.text[2] }}
+        />
+        <Link to={'/listings/'}>
+          <Button margin={'small'} label={'View Our Listings'} />
+        </Link>
       </BoxWrapper>
     </ContentWrapper>
-    
   </Wrapper>
 )
 
-export default InfoCard;
+export default InfoCard

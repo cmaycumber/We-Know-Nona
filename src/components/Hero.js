@@ -54,7 +54,7 @@ const ContentBox = styled.div`
   justify-content: center;
   align-items: center;
   padding: 3em;
-  border-radius: .2em;
+  border-radius: 0.2em;
   padding-bottom: 5em;
   width: 50%;
   height: auto;
@@ -63,7 +63,8 @@ const ContentBox = styled.div`
     margin: 0em;
     width: 100%;
     align-items: center;
-  }`
+  }
+`
 
 const Hero = props => (
   <Wrapper>
@@ -73,9 +74,7 @@ const Hero = props => (
       backgroundColor={'#eeeeee'}
     />
     <ContentWrapper>
-      <ContentBox>
-        {props.children}
-      </ContentBox>
+      <ContentBox>{props.children}</ContentBox>
     </ContentWrapper>
   </Wrapper>
 )

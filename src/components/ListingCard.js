@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { Heading, Text } from 'grommet';
+import { Heading, Text } from 'grommet'
 
 const Listing = styled.li`
   position: relative;
@@ -40,7 +40,7 @@ const Listing = styled.li`
 
 const Title = styled(Heading)`
   text-transform: capitalize;
-  margin: .5rem 1rem .5rem 1rem;
+  margin: 0.5rem 1rem 0.5rem 1rem;
 `
 
 const InfoWrapper = styled.div`
@@ -48,11 +48,11 @@ const InfoWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
-  padding: .2rem;
+  padding: 0.2rem;
 `
 
 const Excerpt = styled(Text)`
-  margin: 0 1rem .5rem 1rem;
+  margin: 0 1rem 0.5rem 1rem;
 `
 
 const Info = styled.div`
@@ -62,27 +62,50 @@ const Info = styled.div`
   flex-direction: row;
 `
 
-const ListingCard = ({ slug, heroImage, title, publishDate, body, baths, beds, price, ...props }) => {
+const ListingCard = ({
+  slug,
+  heroImage,
+  title,
+  publishDate,
+  body,
+  baths,
+  beds,
+  price,
+  ...props
+}) => {
   return (
     <Listing>
       <Link to={`/listings/${slug}/`}>
         <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
         <Title level={4}>{title}</Title>
         <Info>
-          { (price !== 0) && <InfoWrapper>
-            <Heading color={'#5d5d5d'} level={5}>{'Price: '}</Heading>
-            <Text size={'small'}>{price}</Text>
-          </InfoWrapper> }
-          { beds && <InfoWrapper>
-            <Heading color={'#5d5d5d'} level={5}>{'Bed: '}</Heading>
-            <Text size={'small'}>{beds}</Text>
-          </InfoWrapper> }
-          { baths && <InfoWrapper>
-            <Heading color={'#5d5d5d'} level={5}>{'Bath: '}</Heading>
-            <Text size={'small'}>{baths}</Text>
-          </InfoWrapper> }
+          {price !== 0 && (
+            <InfoWrapper>
+              <Heading color={'#5d5d5d'} level={5}>
+                {'Price: '}
+              </Heading>
+              <Text size={'small'}>{price}</Text>
+            </InfoWrapper>
+          )}
+          {beds && (
+            <InfoWrapper>
+              <Heading color={'#5d5d5d'} level={5}>
+                {'Bed: '}
+              </Heading>
+              <Text size={'small'}>{beds}</Text>
+            </InfoWrapper>
+          )}
+          {baths && (
+            <InfoWrapper>
+              <Heading color={'#5d5d5d'} level={5}>
+                {'Bath: '}
+              </Heading>
+              <Text size={'small'}>{baths}</Text>
+            </InfoWrapper>
+          )}
         </Info>
-        <Excerpt size={'small'}
+        <Excerpt
+          size={'small'}
           textAlign={'center'}
           dangerouslySetInnerHTML={{
             __html: body.childMarkdownRemark.excerpt,

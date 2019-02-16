@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     text-decoration: none;
     transition: 0.2s;
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 `
@@ -55,7 +55,7 @@ class Pagination extends React.Component {
     const prevPageNum = currentPage - 1 === 1 ? `` : currentPage - 1
     const nextPageNum = currentPage + 1
 
-    console.log(currentPage);
+    console.log(currentPage)
 
     const pathPrefix = typeof slug === 'string' ? `/blog/tag/${slug}` : '/blog/'
 

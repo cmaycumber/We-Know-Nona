@@ -21,7 +21,7 @@ const Box = styled.div`
     text-decoration: none;
     transition: 0.2s;
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 `
@@ -46,7 +46,9 @@ const PostLinks = props => {
           </PreviousLink>
         )}
         {props.next && (
-          <NextLink to={`/blog/${props.next.slug}/`}>Next Post &#8594;</NextLink>
+          <NextLink to={`/blog/${props.next.slug}/`}>
+            Next Post &#8594;
+          </NextLink>
         )}
       </Box>
     </Wrapper>

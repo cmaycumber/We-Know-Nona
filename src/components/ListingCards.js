@@ -16,4 +16,4 @@ const ListingCards = props => {
   return <List>{props.children}</List>
 }
 
-export default ListingCards;
+export default ListingCards

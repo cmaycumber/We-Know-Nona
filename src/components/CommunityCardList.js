@@ -16,4 +16,4 @@ const CommunityCardList = props => {
   return <List>{props.children}</List>
 }
 
-export default CommunityCardList;
+export default CommunityCardList

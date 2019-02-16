@@ -57,7 +57,7 @@ const ContentBox = styled.div`
   justify-content: center;
   align-items: center;
   padding: 3em;
-  border-radius: .2em;
+  border-radius: 0.2em;
   padding-bottom: 5em;
   width: 50%;
   color: white;
@@ -67,13 +67,14 @@ const ContentBox = styled.div`
     margin: 0em;
     width: 100%;
     align-items: center;
-  }`
+  }
+`
 
 const Overlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, .25);
+  background: rgba(0, 0, 0, 0.25);
   height: 100%;
   width: 100%;
 `
@@ -85,11 +86,15 @@ const MiniHero = props => (
       fluid={props.image.fluid}
       backgroundColor={'#eeeeee'}
     />
-    <Overlay/>
+    <Overlay />
     <ContentWrapper>
       <ContentBox>
-        <Heading margin={'small'} level={1}>{props.title ? props.title : 'Live'}</Heading>
-        <Text margin={'small'}>{props.tagline ? props.tagline : 'The Lake Nona life'}</Text>
+        <Heading margin={'small'} level={1}>
+          {props.title ? props.title : 'Live'}
+        </Heading>
+        <Text margin={'small'}>
+          {props.tagline ? props.tagline : 'The Lake Nona life'}
+        </Text>
       </ContentBox>
     </ContentWrapper>
   </Wrapper>

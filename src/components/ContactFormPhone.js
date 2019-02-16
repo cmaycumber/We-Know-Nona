@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import PhoneNumber from './PhoneNumber';
-import { Text } from 'grommet';
+import React from 'react'
+import styled from 'styled-components'
+import PhoneNumber from './PhoneNumber'
+import { Text } from 'grommet'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,10 +18,10 @@ export const ContactFormPhone = () => {
   return (
     <Wrapper>
       <Text margin={'small'}>Give us a call at </Text>
-      <PhoneNumber/>
+      <PhoneNumber />
       <Text margin={'small'}> or contact us below</Text>
     </Wrapper>
-  );
+  )
 }
 
-export default ContactFormPhone;
+export default ContactFormPhone

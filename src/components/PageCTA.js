@@ -1,8 +1,8 @@
-import React from 'react';
-import { Button, Text } from 'grommet';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import PhoneNumber from '../components/PhoneNumber';
+import React from 'react'
+import { Button, Text } from 'grommet'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
+import PhoneNumber from '../components/PhoneNumber'
 
 const Wrapper = styled.div`
   position: relative;
@@ -21,13 +21,15 @@ const ContactButton = styled(Button)`
 const PageCTA = () => {
   return (
     <Wrapper>
-      <Link to='/contact/'>
-        <ContactButton primary label={'Contact Us Now'}/>
+      <Link to="/contact/">
+        <ContactButton primary label={'Contact Us Now'} />
       </Link>
-      <Text size={'large'} margin={'medium'}>or give us a call at</Text>
-      <PhoneNumber/>
+      <Text size={'large'} margin={'medium'}>
+        or give us a call at
+      </Text>
+      <PhoneNumber />
     </Wrapper>
-  );
+  )
 }
 
-export default PageCTA;
+export default PageCTA

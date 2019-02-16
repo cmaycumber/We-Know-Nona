@@ -32,15 +32,13 @@ const ListingTemplate = ({ data }) => {
     align-items: center;
   `
 
-  const InfoItems = styled(Heading)`
-
-  `
+  const InfoItems = styled(Heading)``
 
   const InfoValues = styled(Text)`
     font-weight: bold;
     padding: 0em 1em;
   `
-  
+
   return (
     <Layout>
       <Helmet>
@@ -57,10 +55,12 @@ const ListingTemplate = ({ data }) => {
           <InfoItems level={3}>Baths: </InfoItems>
           <InfoValues>{baths}</InfoValues>
         </InfoWrapper>
-        {price !== 0 && <InfoWrapper>
-          <InfoItems level={3}>Price: </InfoItems>
-          <InfoValues>{price}</InfoValues>
-        </InfoWrapper> }
+        {price !== 0 && (
+          <InfoWrapper>
+            <InfoItems level={3}>Price: </InfoItems>
+            <InfoValues>{price}</InfoValues>
+          </InfoWrapper>
+        )}
         <PostDate date={publishDate} />
         <PageBody body={body} />
       </Container>
@@ -70,38 +70,38 @@ const ListingTemplate = ({ data }) => {
 }
 
 export const query = graphql`
-query($slug: String!) {
-  contentfulListing(slug: { eq: $slug }) {
-    title
-    heroImage {
+  query($slug: String!) {
+    contentfulListing(slug: { eq: $slug }) {
       title
-      fluid(maxWidth: 1800) {
-        ...GatsbyContentfulFluid_withWebp_noBase64
+      heroImage {
+        title
+        fluid(maxWidth: 1800) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+        ogimg: resize(width: 1800) {
+          src
+          width
+          height
+        }
       }
-      ogimg: resize(width: 1800) {
-        src
-        width
-        height
+      metaDescription {
+        internal {
+          content
+        }
       }
-    }
-    metaDescription {
-      internal {
-        content
-      }
-    }
-    publishDate(formatString: "MMMM DD, YYYY")
-    slug
-    beds
-    baths
-    price
-    body {
-      childMarkdownRemark {
-        html
-        excerpt(pruneLength: 130)
+      publishDate(formatString: "MMMM DD, YYYY")
+      slug
+      beds
+      baths
+      price
+      body {
+        childMarkdownRemark {
+          html
+          excerpt(pruneLength: 130)
+        }
       }
     }
   }
-}
 `
 
 export default ListingTemplate

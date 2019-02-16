@@ -89,7 +89,7 @@ const Submit = styled.input`
   cursor: pointer;
   transition: 0.2s;
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
 `
 
@@ -238,7 +238,9 @@ class ContactForm extends React.Component {
             Thank you for reaching out. I will get back to you as soon as
             possible.
           </p>
-          <ContactButton primary onClick={this.closeModal}>Okay</ContactButton>
+          <ContactButton primary onClick={this.closeModal}>
+            Okay
+          </ContactButton>
         </Modal>
       </Form>
     )

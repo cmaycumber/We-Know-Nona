@@ -54,7 +54,14 @@ const Excerpt = styled.p`
   line-height: 1.6;
 `
 
-const CommunityCard = ({ slug, heroImage, title, publishDate, body, ...props }) => {
+const CommunityCard = ({
+  slug,
+  heroImage,
+  title,
+  publishDate,
+  body,
+  ...props
+}) => {
   return (
     <Community featured={props.featured}>
       <Link to={`/communities/${slug}/`}>

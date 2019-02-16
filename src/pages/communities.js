@@ -4,11 +4,11 @@ import config from '../utils/siteConfig'
 import Layout from '../components/Layout'
 import Container from '../components/Container'
 import SEO from '../components/SEO'
-import PageCTA from '../components/PageCTA';
-import { graphql } from 'gatsby';
-import CommunityCard from '../components/CommunityCard';
-import CommunityCardList from '../components/CommunityCardList';
-import { Heading } from 'grommet';
+import PageCTA from '../components/PageCTA'
+import { graphql } from 'gatsby'
+import CommunityCard from '../components/CommunityCard'
+import CommunityCardList from '../components/CommunityCardList'
+import { Heading } from 'grommet'
 
 const Communities = ({ data }) => {
   const postNode = {
@@ -24,48 +24,45 @@ const Communities = ({ data }) => {
       </Helmet>
       <SEO postNode={postNode} pagePath="communities" customTitle />
       <Container>
-        <Heading textAlign={'center'} level={1}>Communities</Heading>
+        <Heading textAlign={'center'} level={1}>
+          Communities
+        </Heading>
         <CommunityCardList>
-          <CommunityCard {...featuredCommunity}/>
+          <CommunityCard {...featuredCommunity} />
           {communities.slice(1).map(({ node: communities }, i) => (
             <CommunityCard key={i} {...communities} />
           ))}
         </CommunityCardList>
-        <PageCTA/>
+        <PageCTA />
       </Container>
     </Layout>
   )
 }
 
 export const query = graphql`
-query {
-	allContentfulPage(filter: { 
-    community:{eq :true}
-  }){
-    edges {
-      node {
-        title
-        slug
-        heroImage {
+  query {
+    allContentfulPage(filter: { community: { eq: true } }) {
+      edges {
+        node {
           title
-          fluid(maxWidth: 1800) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
+          slug
+          heroImage {
+            title
+            fluid(maxWidth: 1800) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
           }
-        }
-        body {
-          childMarkdownRemark {
-            html
-            excerpt(pruneLength: 320)
+          body {
+            childMarkdownRemark {
+              html
+              excerpt(pruneLength: 320)
+            }
           }
+          community
         }
-        community
       }
     }
   }
-}
 `
 
-
 export default Communities
-
-

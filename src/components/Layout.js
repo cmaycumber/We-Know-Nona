@@ -7,9 +7,8 @@ import theme from '../styles/theme'
 import config from '../utils/siteConfig'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
-import GrommetTheme from '../styles/grommetTheme';
-import { Grommet } from 'grommet';
-
+import GrommetTheme from '../styles/grommetTheme'
+import { Grommet } from 'grommet'
 
 const Template = ({ children }) => {
   return (
@@ -25,7 +24,7 @@ const Template = ({ children }) => {
           <>
             <div className="siteContent">
               <Menu />
-              {children}              
+              {children}
             </div>
             <Footer />
           </>

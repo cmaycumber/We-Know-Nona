@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Heading } from 'grommet';
+import { Text, Heading } from 'grommet'
 
 const Wrapper = styled.section`
   position: relative;
@@ -24,8 +24,16 @@ const Title = styled(Heading)`
 
 const CardCallout = props => (
   <Wrapper>
-    { props.title && <Title textAlign={'center'} level={6}>{ props.title ? props.title : 'Friendly, Smart, Efficient' }</Title> }
-    <Text textAlign={'center'} size={'large'} dangerouslySetInnerHTML={{ __html: props.text }}/>
+    {props.title && (
+      <Title textAlign={'center'} level={6}>
+        {props.title ? props.title : 'Friendly, Smart, Efficient'}
+      </Title>
+    )}
+    <Text
+      textAlign={'center'}
+      size={'large'}
+      dangerouslySetInnerHTML={{ __html: props.text }}
+    />
   </Wrapper>
 )
 
