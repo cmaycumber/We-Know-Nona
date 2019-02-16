@@ -69,6 +69,7 @@ const ContentBox = styled.div`
 const Hero = props => (
   <Wrapper>
     <BgImg
+      critical
       height={props.height}
       fluid={props.image.fluid}
       backgroundColor={'#eeeeee'}
