@@ -7,8 +7,8 @@ import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import Img from 'gatsby-image'
 
 const Header = styled.header`
-  visibility: ${props =>
-    props.home === undefined ? 'hidden' : 'visible'};
+  display: ${props =>
+    props.home === undefined ? 'none' : ''};
   background: ${props =>
     props.colored || !props.home ? 'white' : 'transparent'};
   width: 100%;
