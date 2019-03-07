@@ -1,6 +1,6 @@
 module.exports = {
   siteTitle: 'We Know Nona',
-  siteTitleAlt: 'We Know Nona', // This allows an alternative site title for SEO schema.
+  siteTitleAlt: 'Premier Lake Nona Real Estate Team', // This allows an alternative site title for SEO schema.
   publisher: 'The Maycumber Reality Team', // Organization name used for SEO schema
   siteDescription:
     'We Know Nona the premier Real Estate team operating in Lake Nona, Orlando Florida',
