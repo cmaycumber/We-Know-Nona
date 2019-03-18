@@ -26,6 +26,7 @@ const Blog = ({ data, pageContext }) => {
           <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
         </Helmet>
       )}
+      
       <Hero height="70vh" image={featuredPost.heroImage}>
         <Heading
           textAlign={'center'}

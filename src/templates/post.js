@@ -10,6 +10,7 @@ import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
 import PostDate from '../components/PostDate'
 import SEO from '../components/SEO'
+import { Heading } from 'grommet';
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -31,7 +32,9 @@ const PostTemplate = ({ data, pageContext }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
-      <Hero title={title} image={heroImage} height={'50vh'} />
+      <Hero title={title} image={heroImage} height={'50vh'}>
+        <Heading color="white" level={2}>{title}</Heading>
+      </Hero>
       <Container>
         {tags && <TagList tags={tags} />}
         <PostDate date={publishDate} />
