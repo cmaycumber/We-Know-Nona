@@ -34,7 +34,7 @@ const Index = ({ data, pageContext }) => {
       <SEO />
       {!isFirstPage && (
         <Helmet>
-          <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
+          <title>{`${config.siteTitle} - The Premier Lake Nona Real Estate Team`}</title>
         </Helmet>
       )}
       <Hero height={'100vh'} image={home.heroImage}>
