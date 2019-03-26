@@ -56,6 +56,7 @@ export const query = graphql`
       sort: { fields: [publishDate], order: DESC }
       limit: $limit
       skip: $skip
+      filter: {node_locale: {eq: "en-US"}}      
     ) {
       edges {
         node {

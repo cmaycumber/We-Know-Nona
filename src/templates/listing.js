@@ -71,7 +71,9 @@ const ListingTemplate = ({ data }) => {
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulListing(slug: { eq: $slug }) {
+    contentfulListing(
+      slug: { eq: $slug }
+      ) {
       title
       heroImage {
         title
