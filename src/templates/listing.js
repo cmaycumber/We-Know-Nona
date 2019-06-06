@@ -10,11 +10,29 @@ import PostDate from '../components/PostDate'
 import SEO from '../components/SEO'
 import { Heading, Text } from 'grommet'
 import styled from 'styled-components'
+import Slider from "react-slick";
+
+const InfoWrapper = styled.div`
+    display: flex;
+    margin: 0 auto 2em;
+    max-width: ${props => props.theme.sizes.maxWidthCentered};
+    justify-content: flex-start;
+    align-items: center;
+  `
+
+const InfoItems = styled(Heading)``
+
+const InfoValues = styled(Text)`
+  font-weight: bold;
+  padding: 0em 1em;
+`
+
 
 const ListingTemplate = ({ data }) => {
   const {
     title,
     heroImage,
+    additionalImages,
     publishDate,
     slug,
     beds,
@@ -24,20 +42,17 @@ const ListingTemplate = ({ data }) => {
   } = data.contentfulListing
   const postNode = data.contentfulListing
 
-  const InfoWrapper = styled.div`
-    display: flex;
-    margin: 0 auto 2em;
-    max-width: ${props => props.theme.sizes.maxWidthCentered};
-    justify-content: flex-start;
-    align-items: center;
-  `
+  const slickSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplaySpeed: 5000,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
 
-  const InfoItems = styled(Heading)``
-
-  const InfoValues = styled(Text)`
-    font-weight: bold;
-    padding: 0em 1em;
-  `
+  console.log(additionalImages);
 
   return (
     <Layout>
@@ -45,8 +60,20 @@ const ListingTemplate = ({ data }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
-      <Hero title={title} image={heroImage} height={'70vh'} />
+      {
+        additionalImages ? 
+        <Slider {...slickSettings}>
+          <Hero title={title} image={heroImage} height={'70vh'} />
+          {
+            additionalImages.map((image, index) => (
+              <Hero title={title} image={image} key={index} height={'70vh'} />
+            ))
+          }
+        </Slider>
+        : <Hero title={title} image={heroImage} height={'70vh'} /> 
+      }
       <Container>
+
         <InfoWrapper>
           <InfoItems level={3}>Beds: </InfoItems>
           <InfoValues>{beds}</InfoValues>
@@ -76,6 +103,17 @@ export const query = graphql`
       ) {
       title
       heroImage {
+        title
+        fluid(maxWidth: 1800) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+        ogimg: resize(width: 1800) {
+          src
+          width
+          height
+        }
+      }
+      additionalImages {
         title
         fluid(maxWidth: 1800) {
           ...GatsbyContentfulFluid_withWebp_noBase64

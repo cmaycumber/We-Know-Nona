@@ -44,7 +44,7 @@ export const query = graphql`
   query {
     allContentfulListing(
       sort: { fields: [publishDate], order: DESC }
-      filter: {node_locale: {eq: "en-US"}}            
+      filter: {node_locale: {eq: "en-US"}}      
       ) {
       edges {
         node {
