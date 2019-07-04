@@ -7,8 +7,7 @@ import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import Img from 'gatsby-image'
 
 const Header = styled.header`
-  display: ${props =>
-    props.home === undefined ? 'none' : ''};
+  display: ${props => (props.home === undefined ? 'none' : '')};
   background: ${props =>
     props.colored || !props.home ? 'white' : 'transparent'};
   width: 100%;
@@ -69,7 +68,7 @@ const ListButton = styled.li`
   padding: .5em 1em .5em 1em;
    /* a {
      color: ${props =>
-    props.colored || !props.home ? props.theme.colors.brand : 'white'};
+       props.colored || !props.home ? props.theme.colors.brand : 'white'};
      text-decoration: none;
    } */
 `
@@ -198,14 +197,14 @@ const Menu = ({ data }) => {
     }
 
     handleResize()
-    window.addEventListener('resize', handleResize)
     window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
 
-    return function cleanup() {
+    return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [coloredMenu, isMobile])
+  }, [])
 
   const handleResize = () => {
     if (menuOpen) {
@@ -219,6 +218,7 @@ const Menu = ({ data }) => {
   }
 
   const handleScroll = () => {
+    console.log('Scroll is being handled')
     if (window.scrollY > 0) {
       setColoredMenu(true)
     } else {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
@@ -10,15 +10,32 @@ import PostDate from '../components/PostDate'
 import SEO from '../components/SEO'
 import { Heading, Text } from 'grommet'
 import styled from 'styled-components'
-import Slider from "react-slick";
+import SwipeableViews from 'react-swipeable-views'
 
 const InfoWrapper = styled.div`
-    display: flex;
-    margin: 0 auto 2em;
-    max-width: ${props => props.theme.sizes.maxWidthCentered};
-    justify-content: flex-start;
-    align-items: center;
-  `
+  display: flex;
+  margin: 0 auto 2em;
+  max-width: ${props => props.theme.sizes.maxWidthCentered};
+  justify-content: flex-start;
+  align-items: center;
+`
+
+const Dots = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1em 0;
+`
+
+const Dot = styled.div`
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 4px;
+  border: 1px solid black;
+  background: ${props => (props.selected ? 'black' : 'transparent')};
+`
 
 const InfoItems = styled(Heading)``
 
@@ -26,7 +43,6 @@ const InfoValues = styled(Text)`
   font-weight: bold;
   padding: 0em 1em;
 `
-
 
 const ListingTemplate = ({ data }) => {
   const {
@@ -42,17 +58,7 @@ const ListingTemplate = ({ data }) => {
   } = data.contentfulListing
   const postNode = data.contentfulListing
 
-  const slickSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    autoplaySpeed: 5000,
-    autoplay: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  }
-
-  console.log(additionalImages);
+  const [selected, setSelected] = useState(0)
 
   return (
     <Layout>
@@ -60,20 +66,36 @@ const ListingTemplate = ({ data }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
-      {
-        additionalImages ? 
-        <Slider {...slickSettings}>
-          <Hero title={title} image={heroImage} height={'70vh'} />
-          {
-            additionalImages.map((image, index) => (
-              <Hero title={title} image={image} key={index} height={'70vh'} />
-            ))
-          }
-        </Slider>
-        : <Hero title={title} image={heroImage} height={'70vh'} /> 
-      }
+      {additionalImages ? (
+        <React.Fragment>
+          <SwipeableViews
+            onChangeIndex={(index, indexLatest, meta) => setSelected(index)}
+            index={selected}
+            enableMouseEvents
+          >
+            {additionalImages.map((image, index) => {
+              return (
+                <Hero title={title} image={image} key={index} height={'70vh'} />
+              )
+            })}
+          </SwipeableViews>
+          <Dots>
+            {additionalImages.length > 1 &&
+              additionalImages.map((image, index) => {
+                return (
+                  <Dot
+                    onClick={() => setSelected(index)}
+                    selected={index === selected}
+                    key={index}
+                  />
+                )
+              })}
+          </Dots>
+        </React.Fragment>
+      ) : (
+        <Hero title={title} image={heroImage} height={'70vh'} />
+      )}
       <Container>
-
         <InfoWrapper>
           <InfoItems level={3}>Beds: </InfoItems>
           <InfoValues>{beds}</InfoValues>
@@ -98,9 +120,7 @@ const ListingTemplate = ({ data }) => {
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulListing(
-      slug: { eq: $slug }
-      ) {
+    contentfulListing(slug: { eq: $slug }) {
       title
       heroImage {
         title
