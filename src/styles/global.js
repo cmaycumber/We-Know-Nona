@@ -35,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
   /* Added to Fix Footer to bottom of viewport */
   html, body {
     height: 100%;
-    overflow-x: hidden;
   }
   .siteRoot {
     height: 100vh;
